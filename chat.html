@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Real-Time Chat App - Login</title>
+  <!-- Add your inline CSS styles for login UI -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .login-container {
+      max-width: 400px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      padding: 40px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: #333;
+      margin-bottom: 30px;
+    }
+
+    button {
+      background-color: #007BFF;
+      color: #fff;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <h1>Real-Time Chat App</h1>
+    <button onclick="signInWithGoogle()">Sign In with Google</button>
+  </div>
+  <!-- Add the older Firebase JavaScript SDK -->
+  < <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script>
+    // Initialize Firebase with your config
+    var firebaseConfig = {
+      apiKey: "AIzaSyCoYAhOYoIR-hfV4KgeX3Pia1zZNdsn92Y",
+      authDomain: "chatapp-71198.firebaseapp.com",
+      projectId: "chatapp-71198",
+      storageBucket: "chatapp-71198.appspot.com",
+      messagingSenderId: "546062527983",
+      appId: "1:546062527983:web:86adadacf759736a8b5a1a"
+    };
+    firebase.initializeApp(firebaseConfig);
+
+    // Function to handle Google sign-in
+    function signInWithGoogle() {
+      var provider = new firebase.auth.GoogleAuthProvider();
+      firebase.auth().signInWithPopup(provider)
+        .then(function (result) {
+          // Redirect to chat.html on successful login
+          window.location.href = "chat.html";
+        })
+        .catch(function (error) {
+          console.error("Google sign-in error:", error);
+        });
+    }
+  </script>
+</body>
+</html>
